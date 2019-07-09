@@ -1,0 +1,13 @@
+body {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    color: #5a5a5a;
+}
+
+footer {
+    margin-top:3rem;
+}
+
+hr {
+    margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+}
