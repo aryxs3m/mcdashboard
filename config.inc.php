@@ -15,7 +15,7 @@ define("WEBSITE_TITLE", "MCDashboard");
 define("USERNAME", "admin");
 define("PASSWORD", "admin");
 
-define("MC_SERVER_ADDRESS", "totoro.potvizs.ga");
+define("MC_SERVER_ADDRESS", "127.0.0.1");
 define("MC_SERVER_PORT", 25565);
 define("MC_OLDER_THAN_17", false); // true if server is version 1.16 or older
 
