@@ -1,81 +1,73 @@
 <?php
 
+    $conn = new mysqli(
+            PLUGIN_AUTHME_MYSQL_SERVER,
+            PLUGIN_AUTHME_MYSQL_USERNAME,
+            PLUGIN_AUTHME_MYSQL_PASSWORD,
+            PLUGIN_AUTHME_MYSQL_PASSWORD
+        );
+
+    if ($conn->connect_error) {
+        die("MySQL error! " . $conn->connect_error);
+    }
+
+    $conn->query("SET NAMES UTF8"); // just to be sure
+
+    $stmt = $conn->prepare("SELECT id, username, ip, isLogged FROM " . PLUGIN_AUTHME_TABLE . " ORDER BY id");
+    $stmt->bind_result($userId, $userName, $userIp, $userOnline);
+    $stmt->execute();
 
 ?>
 
-<h1 class="p-3 bg-primary text-light">RCON</h1>
+<h1 class="p-3 bg-primary text-light">AuthMe</h1>
 
-<div class="card mb-3">
-    <div class="card-body">
-        <h5 class="card-title">Say something</h5>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Username</th>
+        <th scope="col">Online</th>
+        <th scope="col">Last IP</th>
+        <th scope="col">Manage</th>
+    </tr>
+    </thead>
+    <tbody>
 
-        <div class="input-group">
-            <input type="text" id="say_box" class="form-control" placeholder="Hello!" aria-label="Hello!">
-            <div class="input-group-append">
-                <button class="btn btn-primary" type="button" id="button-say">Say</button>
-            </div>
-        </div>
+    <?php
 
-    </div>
-</div>
+    while ($stmt->fetch()) {
 
-<div class="card mb-3">
-    <div class="card-body">
-        <h5 class="card-title">Atmosphere</h5>
-        <p class="card-text">Set time and weather</p>
-        <div class="btn-toolbar mb-3" role="toolbar" aria-label="Atmosphere change buttons">
-            <div class="btn-group mr-2" role="group" aria-label="Set time">
-                <button type="button" class="btn btn-primary"><i class="fas fa-sun"></i> Day</button>
-                <button type="button" class="btn btn-primary"><i class="fas fa-moon"></i> Night</button>
-            </div>
-            <div class="btn-group mr-2" role="group" aria-label="Set weather">
-                <button type="button" class="btn btn-primary"><i class="fas fa-sun"></i> Clear</button>
-                <button type="button" class="btn btn-primary"><i class="fas fa-cloud"></i> Rain</button>
-                <button type="button" class="btn btn-primary"><i class="fas fa-bolt"></i> Thunder</button>
-            </div>
-        </div>
-    </div>
-</div>
+        if ($userOnline) {
+            $onlineBadgeColor = "success";
+            $onlineBadgeText = "Yes";
+        } else {
+            $onlineBadgeColor = "danger";
+            $onlineBadgeText = "No";
+        }
 
-<div class="card mb-3">
-    <div class="card-body">
-        <h5 class="card-title">Gamemode</h5>
-        <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
-            <div class="btn-group mr-2" role="group" aria-label="First group">
-                <button type="button" class="btn btn-primary"><i class="fas fa-cube"></i> Creative</button>
-                <button type="button" class="btn btn-primary"><i class="fas fa-shield-alt"></i> Survival</button>
-                <button type="button" class="btn btn-primary"><i class="fas fa-map"></i> Adventure</button>
-            </div>
-        </div>
-    </div>
-</div>
+        ?>
 
-<div class="card mb-3">
-    <div class="card-body">
-        <h5 class="card-title">Kick/ban/unban player</h5>
+        <tr>
+            <th scope="row"><?= $userId ?></th>
+            <td><?= $userName ?></td>
+            <td><span class="badge badge-<?= $onlineBadgeColor ?>"><?= $onlineBadgeText ?></span></td>
+            <td><?= $userIp ?? "Unknown" ?></td>
+            <td>
+                <a class="btn btn-sm btn-outline-primary btn-delete-account" data-id=""><i class="fas fa-trash"></i></a>
+            </td>
+        </tr>
 
-        <div class="input-group">
-            <input type="text" id="kbu_player_name" class="form-control" placeholder="Player name" aria-label="Player name">
-            <div class="input-group-append">
-                <button class="btn btn-primary" type="button" id="button-kick">Kick</button>
-                <button class="btn btn-primary" type="button" id="button-ban">Ban</button>
-                <button class="btn btn-primary" type="button" id="button-unban">Unban</button>
-            </div>
-        </div>
+        <?php
+    }
 
-    </div>
-</div>
+    ?>
 
-<div class="card bg-danger text-light">
-    <div class="card-body">
-        <h5 class="card-title">Custom command</h5>
+    </tbody>
+</table>
 
-        <div class="input-group">
-            <input type="text" id="command_box" class="form-control" placeholder="op yourname" aria-label="op yourname">
-            <div class="input-group-append">
-                <button class="btn btn-primary" type="button" id="button-exec">Execute</button>
-            </div>
-        </div>
+<?php
 
-    </div>
-</div>
+    $stmt->close();
+    $conn->close();
+
+?>
