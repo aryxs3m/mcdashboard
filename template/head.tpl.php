@@ -7,6 +7,7 @@
     <title><?= WEBSITE_TITLE ?></title>
 
     <link href="styles/bootstrap.min.css" rel="stylesheet">
+    <link href="styles/fontawesome.min.css" rel="stylesheet">
     <link href="styles/template.css" rel="stylesheet">
     <link href="styles/mcdashboard.css" rel="stylesheet">
   </head>

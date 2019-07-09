@@ -15,13 +15,16 @@ define("WEBSITE_TITLE", "MCDashboard");
 define("USERNAME", "admin");
 define("PASSWORD", "admin");
 
-define("MC_SERVER_ADDRESS", "127.0.0.1");
+define("MC_SERVER_ADDRESS", "totoro.potvizs.ga");
 define("MC_SERVER_PORT", 25565);
+define("MC_OLDER_THAN_17", false); // true if server is version 1.16 or older
 
-// Plugin descriptions can be found on GitHub
+define("MC_SERVER_TIMEOUT", 5);
+
+// Plugin descriptions can be found on GitHub.
+// Status plugin is always enabled.
 define("ENABLED_PLUGINS",
     array(
-        "status",
         "rcon",
         "authme"
     ));
@@ -32,6 +35,8 @@ define("ENABLED_PLUGINS",
 
 // [RCON CONFIG]
 define("PLUGIN_RCON_PORT", 25575);
+define("PLUGIN_RCON_PASSWORD", "rconpassword");
+define("PLUGIN_RCON_TIMEOUT", 3);
 
 // [AUTHME CONFIG]
 define("PLUGIN_AUTHME_MYSQL_SERVER", "127.0.0.1");
