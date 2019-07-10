@@ -1,9 +1,12 @@
 <?php
 
+    $loadScripts = array("plugin_rcon.js");
 
 ?>
 
 <h1 class="p-3 bg-primary text-light">RCON</h1>
+
+<div id="logplace"></div>
 
 <div class="card mb-3">
     <div class="card-body">
@@ -25,13 +28,13 @@
         <p class="card-text">Set time and weather</p>
         <div class="btn-toolbar mb-3" role="toolbar" aria-label="Atmosphere change buttons">
             <div class="btn-group mr-2" role="group" aria-label="Set time">
-                <button type="button" class="btn btn-primary"><i class="fas fa-sun"></i> Day</button>
-                <button type="button" class="btn btn-primary"><i class="fas fa-moon"></i> Night</button>
+                <button type="button" class="btn btn-primary btn-rcon-easy" data-command="time set day"><i class="fas fa-sun"></i> Day</button>
+                <button type="button" class="btn btn-primary btn-rcon-easy" data-command="time set night"><i class="fas fa-moon"></i> Night</button>
             </div>
             <div class="btn-group mr-2" role="group" aria-label="Set weather">
-                <button type="button" class="btn btn-primary"><i class="fas fa-sun"></i> Clear</button>
-                <button type="button" class="btn btn-primary"><i class="fas fa-cloud"></i> Rain</button>
-                <button type="button" class="btn btn-primary"><i class="fas fa-bolt"></i> Thunder</button>
+                <button type="button" class="btn btn-primary btn-rcon-easy" data-command="weather clear"><i class="fas fa-sun"></i> Clear</button>
+                <button type="button" class="btn btn-primary btn-rcon-easy" data-command="weather rain"><i class="fas fa-cloud"></i> Rain</button>
+                <button type="button" class="btn btn-primary btn-rcon-easy" data-command="weather thunder"><i class="fas fa-bolt"></i> Thunder</button>
             </div>
         </div>
     </div>

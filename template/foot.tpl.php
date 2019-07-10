@@ -11,5 +11,15 @@
 <script src="scripts/popper.min.js"></script>
 <script src="scripts/bootstrap.min.js"></script>
 
+<?php
+
+    if (isset($loadScripts)) {
+        foreach ($loadScripts as $script) {
+            echo "<script src=\"scripts/$script\"></script>";
+        }
+    }
+
+?>
+
 </body>
 </html>
