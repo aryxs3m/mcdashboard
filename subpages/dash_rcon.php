@@ -45,9 +45,9 @@
         <h5 class="card-title">Gamemode</h5>
         <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
             <div class="btn-group mr-2" role="group" aria-label="First group">
-                <button type="button" class="btn btn-primary"><i class="fas fa-cube"></i> Creative</button>
-                <button type="button" class="btn btn-primary"><i class="fas fa-shield-alt"></i> Survival</button>
-                <button type="button" class="btn btn-primary"><i class="fas fa-map"></i> Adventure</button>
+                <button type="button" class="btn btn-primary btn-rcon-easy" data-command="defaultgamemode creative"><i class="fas fa-cube"></i> Creative</button>
+                <button type="button" class="btn btn-primary btn-rcon-easy" data-command="defaultgamemode survival"><i class="fas fa-shield-alt"></i> Survival</button>
+                <button type="button" class="btn btn-primary btn-rcon-easy" data-command="defaultgamemode adventure"><i class="fas fa-map"></i> Adventure</button>
             </div>
         </div>
     </div>
@@ -60,9 +60,9 @@
         <div class="input-group">
             <input type="text" id="kbu_player_name" class="form-control" placeholder="Player name" aria-label="Player name">
             <div class="input-group-append">
-                <button class="btn btn-primary" type="button" id="button-kick">Kick</button>
-                <button class="btn btn-primary" type="button" id="button-ban">Ban</button>
-                <button class="btn btn-primary" type="button" id="button-unban">Unban</button>
+                <button class="btn btn-primary btn-moderate" type="button" data-command="kick">Kick</button>
+                <button class="btn btn-primary btn-moderate" type="button" data-command="ban">Ban</button>
+                <button class="btn btn-primary btn-moderate" type="button" data-command="pardon">Unban</button>
             </div>
         </div>
 
