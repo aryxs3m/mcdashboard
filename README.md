@@ -1,3 +1,7 @@
+This project is no longer maintained. See my new and better Minecraft dashboard: [Minecraft Portal](https://github.com/aryxs3m/minecraft_portal)
+
+---
+
 # MCDashboard
 
 Responsive, self-hosted PHP web dashboard for managing your Minecraft server.
